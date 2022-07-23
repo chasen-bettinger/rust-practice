@@ -3,32 +3,28 @@ pub mod vector_props {
 
     #[derive(Debug)]
     pub struct PersonalVector {
-        value: Vec<i32>,
         sorted_asc: Vec<i32>,
     }
 
     impl PersonalVector {
         pub fn new(mut a_vector: Vec<i32>) -> PersonalVector {
-            let vector_copy = Vec::clone(&a_vector);
             let a_sorted_vec = &mut a_vector;
             a_sorted_vec.sort();
 
             PersonalVector {
-                value: vector_copy,
                 sorted_asc: a_sorted_vec.to_vec(),
             }
         }
 
         pub fn median(&self) -> i32 {
-            println!("median!");
-            dbg!(&self);
-
-            let length_of_vec_raw: usize = &self.sorted_asc.len() / 2;
-            // let length_of_vec: i32 = length_of_vec_raw.round() as i32;
-            let test = &self.sorted_asc.get(length_of_vec_raw);
-            if let Some(&i) = test {
+            let length_of_vec: usize = &self.sorted_asc.len() / 2;
+            let value_of_index = &self.sorted_asc.get(length_of_vec);
+            if let Some(&i) = value_of_index {
                 i
             } else {
+                // TODO: identify how to return None here with the return type.
+                // Ideally the function returns None if we cannot access that part
+                // of the vector
                 0
             }
         }
@@ -39,23 +35,22 @@ pub mod vector_props {
                 hm.entry(i).and_modify(|e| *e += 1).or_insert(0);
             }
 
-            let mut highestTally = 0;
-            let mut modeNumbers = Vec::new();
+            let mut highest_tally = 0;
+            let mut mode_numbers = Vec::new();
 
             for (&key, &val) in hm.iter() {
-                if val > highestTally {
-                    highestTally = val;
-                    modeNumbers = vec![key.to_string()];
+                if val > highest_tally {
+                    highest_tally = val;
+                    mode_numbers = vec![key.to_string()];
                     continue;
                 }
 
-                if val == highestTally {
-                    modeNumbers.push(key.to_string())
+                if val == highest_tally {
+                    mode_numbers.push(key.to_string())
                 }
             }
-            println!("mode");
 
-            return modeNumbers.join(", ");
+            return mode_numbers.join(", ");
         }
     }
 }
