@@ -1,1 +1,22 @@
-[{ "name": "chasen", "department": "ok" }]
+[
+  {
+    "name": "chasen",
+    "department": "testing"
+  },
+  {
+    "name": "another_one",
+    "department": "another_one"
+  },
+  {
+    "name": "candy",
+    "department": "candy"
+  },
+  {
+    "name": "truffle",
+    "department": "truffle"
+  },
+  {
+    "name": "alakazam",
+    "department": "alakazam"
+  }
+]

@@ -5,7 +5,9 @@ mod pig_latin;
 mod vector_props;
 
 fn main() {
-    let pattern = std::env::args().nth(1).expect("no pattern given");
+    let pattern = std::env::args()
+        .nth(1)
+        .expect("valid patterns are: vector-stats, pig-latin, and employees");
     println!("{}", pattern);
 
     match pattern.as_str() {
@@ -24,10 +26,10 @@ fn main() {
         }
         "employees" => {
             let em = employees::employees::Employee {
-                name: String::from("ok"),
-                department: String::from("ok"),
+                name: String::from("alakazam"),
+                department: String::from("alakazam"),
             };
-            em.add();
+            em.add(&em);
         }
         _ => println!("invalid operation!"),
     }
